@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buttons Example</title>
+</head>
+<body>
+
+<button id="inputUrlBtn">Ввести посилання</button>
+<button id="redirectBtn">Переадресувати</button>
+
+<script>
+document.getElementById('inputUrlBtn').addEventListener('click', function() {
+  // Запитуємо користувача ввести посилання через prompt
+  let url = prompt('Будь ласка, введіть посилання:');
+  
+  // Перевіряємо, чи користувач ввів щось у prompt
+  if (url) {
+    // Зберігаємо введене посилання у localStorage
+    localStorage.setItem('redirectUrl', url);
+  }
+});
+
+document.getElementById('redirectBtn').addEventListener('click', function() {
+  // Отримуємо збережене посилання з localStorage
+  let storedUrl = localStorage.getItem('redirectUrl');
+  
+  // Перевіряємо, чи є збережене посилання
+  if (storedUrl) {
+    // Переадресовуємо користувача на збережене посилання
+    window.location.href = storedUrl;
+  } else {
+    alert('Спочатку введіть посилання за допомогою першої кнопки.');
+  }
+});
+</script>
+
+</body>
+</html>
